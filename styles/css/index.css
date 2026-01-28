@@ -60,4 +60,31 @@ h4,
 h5,
 h6 {
   margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3vw;
+  background-color: #90bfb0;
+  background: #2A7B9B;
+  background: linear-gradient(90deg, rgb(42, 123, 155) 0%, rgb(87, 199, 133) 50%, rgb(170, 237, 83) 100%);
+}
+
+.create_todo_btn {
+  background-color: rgba(0, 106, 72, 0.4941176471);
+  min-width: 50vw;
+  min-height: 7vw;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.create_todo_btn:hover {
+  background: #003CC5;
+  box-shadow: none;
+  position: relative;
+  top: 5px;
 }/*# sourceMappingURL=index.css.map */
