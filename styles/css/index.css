@@ -109,6 +109,7 @@ body {
 
 .todo_list {
   overflow-y: auto;
+  scrollbar-width: none;
   border: 3px solid rgba(0, 106, 72, 0.4941176471);
   box-shadow: 17px 17px 0 0 rgba(0, 106, 72, 0.4941176471);
   width: 100%;
@@ -123,6 +124,10 @@ body {
 }
 .todo_list li {
   font-size: small;
+}
+
+.todo_list::-webkit-scrollbar {
+  display: none;
 }
 
 .todo_list:hover {
