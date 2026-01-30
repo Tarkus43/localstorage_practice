@@ -11,17 +11,17 @@
 
 
         <button class="todo_create_btn" id="create_btn">+</button>
-        <div class="todo_form_wrapper hidden" id="todoForm">
-            <form class="todo_form">
+        <div class="todo_form_wrapper hidden" id="todoFormWrapper">
+            <form class="todo_form" id="todoForm">
                 <div class="todo_input_wrapper grid_item-1">
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="titleForm">
+                    <!-- <label for="title">Title</label> -->
+                    <input placeholder="Enter name of todo" class="todo_input todo_form_title" type="text" name="title" id="titleForm">
                 </div>
                 <div class="todo_input_wrapper grid_item-2">
-                    <label for="description">Description</label>
-                    <input type="text" name="description" id="descriptionForm">
+                    <!-- <label for="description">Description</label> -->
+                    <input placeholder="Enter description" class="todo_input todo_form_description" type="text" name="description" id="descriptionForm">
                 </div>
-                <button class="todo_submit_btn grid_item-3" type="submit">create todo</button>
+                <button id='submit' class="todo_submit_btn grid_item-3" type="submit">create todo</button>
             </form>
         </div>
 

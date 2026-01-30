@@ -94,9 +94,17 @@ body {
   transform: scale(1.05);
 }
 
+.todo_form_wrapper {
+  width: 100%;
+}
+
 .todo_input_wrapper {
   border: 1px solid rgba(0, 106, 72, 0.4941176471);
   padding: 2%;
+}
+
+.todo_input {
+  font-size: large;
 }
 
 .todo_form {
@@ -117,7 +125,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2%;
 }
 
 .todo_submit_btn:hover {
