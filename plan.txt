@@ -1,0 +1,17 @@
+todo app to learn how does localstorage work
+
+wazzup, here i`ll be learning some js stuff and i want to make plan before i do it. 
+I think it will be funny to write every step so i can look up for stuff in there.
+
+1. functional part
+    this is a to-do app which saves to-do`s in local storage of your browser.
+    when you open page you will see all todo`s from your local storage and form to create new one.
+    on every to-do there will be edit and delete buttons for same actions.
+
+2. visuals
+    i want to form be on top and the list of to-do`s be downwards(maybe i`ll add some king of pagination)
+    right now i am thinking about adding handlebars to make this SPA and practice it too. 
+    Actualy, thats great idea.
+
+3. workflow
+    1) firstly i`ll make some visuals and carcass for future functions(i`ll do SPA next time)
