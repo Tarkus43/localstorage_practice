@@ -1,3 +1,19 @@
+if (!localStorage.length){
+    localStorage.setItem('todos', JSON.stringify(
+        {
+            0:{
+
+            }
+        }
+    ))
+}
+
+const findLastId = () => {
+    const todos = JSON.parse(localStorage.getItem('todos'))
+    const todoKeys = Object.keys(todos)
+    return todoKeys.sort().pop()
+}
+
 const btn = document.getElementById('create_btn')
 const list = document.getElementById('todoList')
 const formWrapper = document.getElementById('todoFormWrapper')
@@ -14,9 +30,12 @@ form.elements.submit.addEventListener('click',(event) => {
     const todoText = form.elements.descriptionForm.value
 
     const todoObject = {
-        
+        title: todoTitle,
+        text: todoText
     }
-})
 
-console.log(form.elements.submit)
+    
+
+    
+})
 
