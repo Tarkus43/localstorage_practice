@@ -1,5 +1,6 @@
 import { findLastId, checkIfTodoEmpty, addNewTodo } from "./helpers.js"
 
+checkIfTodoEmpty()
 
 const btn = document.getElementById('create_btn')
 const list = document.getElementById('todoList')
@@ -21,8 +22,7 @@ form.elements.submit.addEventListener('click',(event) => {
         text: todoText
     }
 
-    console.log(findLastId())
-
+    addNewTodo(todoObject)
     
 })
 
