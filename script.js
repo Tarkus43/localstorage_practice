@@ -1,18 +1,5 @@
-if (!localStorage.length){
-    localStorage.setItem('todos', JSON.stringify(
-        {
-            0:{
+import { findLastId, checkIfTodoEmpty, addNewTodo } from "./helpers.js"
 
-            }
-        }
-    ))
-}
-
-const findLastId = () => {
-    const todos = JSON.parse(localStorage.getItem('todos'))
-    const todoKeys = Object.keys(todos)
-    return todoKeys.sort().pop()
-}
 
 const btn = document.getElementById('create_btn')
 const list = document.getElementById('todoList')
@@ -34,7 +21,7 @@ form.elements.submit.addEventListener('click',(event) => {
         text: todoText
     }
 
-    
+    console.log(findLastId())
 
     
 })
