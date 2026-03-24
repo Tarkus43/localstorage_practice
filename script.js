@@ -1,6 +1,7 @@
-import { findLastId, checkIfTodoEmpty, addNewTodo } from "./helpers.js"
+import { findLastId, checkIfTodoEmpty, addNewTodo, renderTodos } from "./helpers.js"
 
 checkIfTodoEmpty()
+renderTodos()
 
 const btn = document.getElementById('create_btn')
 const list = document.getElementById('todoList')
@@ -22,7 +23,10 @@ form.elements.submit.addEventListener('click',(event) => {
         text: todoText
     }
 
+    form.elements.titleForm.value = ''
+    form.elements.descriptionForm.value = ''
+
     addNewTodo(todoObject)
-    
+    renderTodos()
 })
 
