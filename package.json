@@ -22,5 +22,8 @@
   "homepage": "https://github.com/Tarkus43/localstorage_practice#readme",
   "devDependencies": {
     "vite": "^8.0.2"
+  },
+  "dependencies": {
+    "sass": "^1.98.0"
   }
 }
