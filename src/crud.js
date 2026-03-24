@@ -1,5 +1,7 @@
+// imports
 import { findLastId } from "./helpers"
 
+// adds new todo to localstorage
 const addNewTodo = (todo) => {
     const todoList = JSON.parse(localStorage.getItem('todos'))
     console.log(todoList)
@@ -8,6 +10,7 @@ const addNewTodo = (todo) => {
     localStorage.setItem('todos', JSON.stringify(todoList))
 }
 
+// renders todos on page
 const renderTodos = () => {
     const list = document.getElementById('todoList')
 
@@ -40,4 +43,5 @@ const renderTodos = () => {
 
 }
 
+// exports
 export {renderTodos, addNewTodo}
