@@ -28,6 +28,7 @@ const renderTodos = () => {
         const deleteTodo = document.createElement('button')
         deleteTodo.textContent = 'delete'
         deleteTodo.id = `btn${todoList[i][0]}`
+        deleteTodo.classList += 'delete_btn'
 
         li.appendChild(title)
         li.appendChild(text)
