@@ -15,6 +15,13 @@ btn.addEventListener('click', () => {
     btn.textContent = btn.textContent == '+' ? btn.textContent = 'x' : btn.textContent = '+'
 })
 
+list.addEventListener('click', e => {
+    if (e.target.classList.contains('delete_btn')){
+        const id = e.target.id.slice(3)
+        console.log(id)
+    }
+})
+
 form.elements.submit.addEventListener('click',(event) => {
     event.preventDefault()
     const todoTitle = form.elements.titleForm.value
