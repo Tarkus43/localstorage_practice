@@ -14,6 +14,7 @@ const renderTodos = () => {
     list.innerHTML = ''
 
     const todoList = Object.entries(JSON.parse(localStorage.getItem('todos')))
+    console.log(todoList)
 
     for (let i = 1; i < todoList.length; i++) {
         const li = document.createElement('li')
@@ -24,8 +25,13 @@ const renderTodos = () => {
         const text = document.createElement('p')
         text.textContent = todoList[i][1]['text']
 
+        const deleteTodo = document.createElement('button')
+        deleteTodo.textContent = 'delete'
+        deleteTodo.id = `btn${todoList[i][0]}`
+
         li.appendChild(title)
         li.appendChild(text)
+        li.appendChild(deleteTodo)
 
 
         list.appendChild(li)
