@@ -1,4 +1,5 @@
 import { findLastId, checkIfTodoEmpty, addNewTodo, renderTodos } from "./helpers.js"
+import './styles/sass/index.scss'
 
 checkIfTodoEmpty()
 renderTodos()

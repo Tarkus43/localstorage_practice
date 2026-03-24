@@ -13,7 +13,7 @@ const addNewTodo = (todo) => {
 }
 
 const checkIfTodoEmpty = () => {
-    if (!localStorage.length){
+    if (localStorage.getItem('todos') == null){
     localStorage.setItem('todos', JSON.stringify(
         {
             0: 'YOU SHOULD NOT SEE THIS'
