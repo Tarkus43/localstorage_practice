@@ -1,3 +1,5 @@
+import { findLastId } from "./helpers"
+
 const addNewTodo = (todo) => {
     const todoList = JSON.parse(localStorage.getItem('todos'))
     console.log(todoList)
@@ -30,3 +32,5 @@ const renderTodos = () => {
     }
 
 }
+
+export {renderTodos, addNewTodo}

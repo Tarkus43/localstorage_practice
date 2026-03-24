@@ -15,4 +15,4 @@ const checkIfTodoEmpty = () => {
 }
 
 
-export {findLastId, addNewTodo, checkIfTodoEmpty, renderTodos}
+export {findLastId, checkIfTodoEmpty}
