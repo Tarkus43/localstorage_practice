@@ -155,7 +155,7 @@ body {
   padding: 5vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: flex-start;
   gap: 2vh;
   transition: 1s;
