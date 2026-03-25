@@ -39,9 +39,8 @@ const renderTodos = () => {
 
         li.appendChild(title)
         li.appendChild(text)
-        li.appendChild(deleteTodo)
         li.appendChild(editTodo)
-
+        li.appendChild(deleteTodo)
 
         list.appendChild(li)
     }
