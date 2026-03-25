@@ -19,7 +19,9 @@ const renderTodos = () => {
     const todoList = Object.entries(JSON.parse(localStorage.getItem('todos')))
 
     for (let i = 1; i < todoList.length; i++) {
-        const li = document.createElement('li')
+        const todo = document.createElement('li')
+        todo.classList += 'todo_item'
+        todo.id = `todo-${todoList[i][0]}`
 
         const title = document.createElement('h3')
         title.textContent = todoList[i][1]['title']
@@ -37,12 +39,12 @@ const renderTodos = () => {
         editTodo.id = `edt${todoList[i][0]}`
         editTodo.classList += 'edit_btn'
 
-        li.appendChild(title)
-        li.appendChild(text)
-        li.appendChild(editTodo)
-        li.appendChild(deleteTodo)
+        todo.appendChild(title)
+        todo.appendChild(text)
+        todo.appendChild(editTodo)
+        todo.appendChild(deleteTodo)
 
-        list.appendChild(li)
+        list.appendChild(todo)
     }
 
 }
@@ -64,6 +66,5 @@ const deleteTodo = (id) => {
     } 
     renderTodos()
 }
-
 // exports
 export {renderTodos, addNewTodo, deleteTodo}
