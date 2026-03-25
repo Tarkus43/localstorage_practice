@@ -32,9 +32,15 @@ const renderTodos = () => {
         deleteTodo.id = `btn${todoList[i][0]}`
         deleteTodo.classList += 'delete_btn'
 
+        const editTodo = document.createElement('button')
+        editTodo.textContent = 'edit'
+        editTodo.id = `edt${todoList[i][0]}`
+        editTodo.classList += 'edit_btn'
+
         li.appendChild(title)
         li.appendChild(text)
         li.appendChild(deleteTodo)
+        li.appendChild(editTodo)
 
 
         list.appendChild(li)
