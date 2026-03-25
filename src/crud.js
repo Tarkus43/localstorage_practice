@@ -17,7 +17,6 @@ const renderTodos = () => {
     list.innerHTML = ''
 
     const todoList = Object.entries(JSON.parse(localStorage.getItem('todos')))
-    console.log(todoList)
 
     for (let i = 1; i < todoList.length; i++) {
         const li = document.createElement('li')
@@ -43,5 +42,23 @@ const renderTodos = () => {
 
 }
 
+const deleteTodo = (id) => {
+    const todoList = JSON.parse(localStorage.getItem('todos'))
+    console.log(`got todo object`)
+    try {
+        delete todoList[id]
+        
+    } catch (error) {
+        console.log(`error during deleting: ${error}`)
+    }
+
+    try {
+        localStorage.setItem('todos', JSON.stringify(todoList))
+    } catch (error) {
+        console.log(`error during saving to localstorage: ${error}`)
+    } 
+    renderTodos()
+}
+
 // exports
-export {renderTodos, addNewTodo}
+export {renderTodos, addNewTodo, deleteTodo}

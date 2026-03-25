@@ -1,6 +1,6 @@
 // imports
 import { findLastId, checkIfTodoEmpty,} from "./helpers.js"
-import { addNewTodo, renderTodos } from "./crud.js"
+import { addNewTodo, renderTodos, deleteTodo } from "./crud.js"
 import './styles/sass/index.scss'
 
 
@@ -23,7 +23,7 @@ btn.addEventListener('click', () => {
 list.addEventListener('click', e => {
     if (e.target.classList.contains('delete_btn')){
         const id = e.target.id.slice(3)
-        console.log(id)
+        deleteTodo(id)
     }
 })
 
