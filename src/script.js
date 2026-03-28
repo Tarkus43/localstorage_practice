@@ -19,6 +19,14 @@ btn.addEventListener('click', () => {
     btn.textContent = btn.textContent == '+' ? btn.textContent = 'x' : btn.textContent = '+'
 })
 
+list.addEventListener('change', e => {
+    if (e.target.classList.contains('todo_done_checkbox')) {
+        const id = e.target.dataset.id
+        updateTodo(id, { completed: e.target.checked })
+        renderTodos()
+    }
+})
+
 // catching button clicks on todos
 list.addEventListener('click', e => {
     if (e.target.classList.contains('delete_btn')){

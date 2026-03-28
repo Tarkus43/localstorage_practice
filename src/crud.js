@@ -5,7 +5,7 @@ import { findLastId } from "./helpers"
 const addNewTodo = (todo) => {
     const todoList = JSON.parse(localStorage.getItem('todos'))
     console.log(todoList)
-    todoList[`${findLastId() + 1}`] = todo
+    todoList[`${findLastId() + 1}`] = { ...todo, completed: false }
     console.log(todoList)
     localStorage.setItem('todos', JSON.stringify(todoList))
 }
@@ -19,26 +19,41 @@ const renderTodos = () => {
     const todoList = Object.entries(JSON.parse(localStorage.getItem('todos')))
 
     for (let i = 1; i < todoList.length; i++) {
+        const id = todoList[i][0]
+        const data = todoList[i][1]
+        const completed = data.completed === true
+
         const todo = document.createElement('li')
-        todo.classList += 'todo_item'
-        todo.id = `todo-${todoList[i][0]}`
+        todo.className = 'todo_item' + (completed ? ' todo_item--completed' : '')
+        todo.id = `todo-${id}`
+
+        const done = document.createElement('input')
+        done.type = 'checkbox'
+        done.className = 'todo_done_checkbox'
+        done.id = `chk${id}`
+        done.dataset.id = id
+        done.checked = completed
+        done.setAttribute('aria-label', 'Mark todo as done')
 
         const title = document.createElement('h3')
-        title.textContent = todoList[i][1]['title']
+        title.className = 'todo_item_title'
+        title.textContent = data['title']
 
         const text = document.createElement('p')
-        text.textContent = todoList[i][1]['text']
+        text.className = 'todo_item_description'
+        text.textContent = data['text']
 
         const deleteTodo = document.createElement('button')
         deleteTodo.textContent = 'delete'
-        deleteTodo.id = `btn${todoList[i][0]}`
+        deleteTodo.id = `btn${id}`
         deleteTodo.classList += 'delete_btn'
 
         const editTodo = document.createElement('button')
         editTodo.textContent = 'edit'
-        editTodo.id = `edt${todoList[i][0]}`
+        editTodo.id = `edt${id}`
         editTodo.classList += 'edit_btn'
 
+        todo.appendChild(done)
         todo.appendChild(title)
         todo.appendChild(text)
         todo.appendChild(editTodo)
@@ -70,8 +85,7 @@ const deleteTodo = (id) => {
 // helper to update todo by id
 const updateTodo = (id, updatedObj) => {
     const todoList = JSON.parse(localStorage.getItem('todos')) || {}
-    // keep existing id in stored object
-    todoList[id] = updatedObj
+    todoList[id] = { ...todoList[id], ...updatedObj }
     try {
         localStorage.setItem('todos', JSON.stringify(todoList))
     } catch (error) {
