@@ -5,7 +5,7 @@ import { findLastId } from "./helpers"
 const addNewTodo = (todo) => {
     const todoList = JSON.parse(localStorage.getItem('todos'))
     console.log(todoList)
-    todoList[`${findLastId() + 1}`] = { ...todo, completed: false }
+    todoList[`${findLastId() + 1}`] = { ...todo, checked: false }
     console.log(todoList)
     localStorage.setItem('todos', JSON.stringify(todoList))
 }
@@ -21,10 +21,12 @@ const renderTodos = () => {
     for (let i = 1; i < todoList.length; i++) {
         const id = todoList[i][0]
         const data = todoList[i][1]
-        const completed = data.completed === true
+        const isChecked =
+            data.checked === true ||
+            (data.checked === undefined && data.completed === true)
 
         const todo = document.createElement('li')
-        todo.className = 'todo_item' + (completed ? ' todo_item--completed' : '')
+        todo.className = 'todo_item' + (isChecked ? ' todo_item--checked' : '')
         todo.id = `todo-${id}`
 
         const done = document.createElement('input')
@@ -32,7 +34,7 @@ const renderTodos = () => {
         done.className = 'todo_done_checkbox'
         done.id = `chk${id}`
         done.dataset.id = id
-        done.checked = completed
+        done.checked = isChecked
         done.setAttribute('aria-label', 'Mark todo as done')
 
         const title = document.createElement('h3')

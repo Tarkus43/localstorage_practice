@@ -134,8 +134,8 @@ body{
     background-color: #fff;
 }
 
-.todo_item--completed .todo_item_title,
-.todo_item--completed .todo_item_description {
+.todo_item--checked .todo_item_title,
+.todo_item--checked .todo_item_description {
     text-decoration: line-through;
     opacity: 0.65;
 }

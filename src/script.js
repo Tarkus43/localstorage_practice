@@ -22,7 +22,7 @@ btn.addEventListener('click', () => {
 list.addEventListener('change', e => {
     if (e.target.classList.contains('todo_done_checkbox')) {
         const id = e.target.dataset.id
-        updateTodo(id, { completed: e.target.checked })
+        updateTodo(id, { checked: Boolean(e.target.checked) })
         renderTodos()
     }
 })
