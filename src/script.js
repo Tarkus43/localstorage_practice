@@ -1,6 +1,6 @@
 // imports
-import { findLastId, checkIfTodoEmpty,} from "./helpers.js"
-import { addNewTodo, renderTodos, deleteTodo } from "./crud.js"
+import { findLastId, checkIfTodoEmpty, getTodoById } from "./helpers.js"
+import { addNewTodo, renderTodos, deleteTodo, updateTodo } from "./crud.js"
 import './styles/sass/index.scss'
 
 
@@ -24,6 +24,82 @@ list.addEventListener('click', e => {
     if (e.target.classList.contains('delete_btn')){
         const id = e.target.id.slice(3)
         deleteTodo(id)
+        return
+    }
+
+    if (e.target.classList.contains('edit_btn')){
+        const id = e.target.id.slice(3)
+        const todoEl = document.getElementById(`todo-${id}`)
+        if (!todoEl) return
+
+        const todo = getTodoById(id)
+        if (!todo) return
+
+        // keep original content in case user cancels
+        const originalContent = todoEl.innerHTML
+
+        // clear element and build inline edit form (project style: create elements)
+        todoEl.innerHTML = ''
+
+        const titleInputWrapper = document.createElement('div')
+        titleInputWrapper.className = 'todo_input_wrapper'
+        const titleInput = document.createElement('input')
+        titleInput.type = 'text'
+        titleInput.className = 'todo_input todo_form_title'
+        titleInput.value = todo.title || ''
+        titleInput.id = `editTitle-${id}`
+        titleInputWrapper.appendChild(titleInput)
+
+        const textInputWrapper = document.createElement('div')
+        textInputWrapper.className = 'todo_input_wrapper'
+        const textInput = document.createElement('input')
+        textInput.type = 'text'
+        textInput.className = 'todo_input todo_form_description'
+        textInput.value = todo.text || ''
+        textInput.id = `editText-${id}`
+        textInputWrapper.appendChild(textInput)
+
+        const actionsWrapper = document.createElement('div')
+        actionsWrapper.className = 'edit_actions'
+
+        const confirmBtn = document.createElement('button')
+        confirmBtn.textContent = 'confirm'
+        confirmBtn.className = 'confirm_update_btn'
+        confirmBtn.id = `conf${id}`
+
+        const cancelBtn = document.createElement('button')
+        cancelBtn.textContent = 'cancel'
+        cancelBtn.className = 'cancel_update_btn'
+        cancelBtn.id = `canc${id}`
+
+        actionsWrapper.appendChild(confirmBtn)
+        actionsWrapper.appendChild(cancelBtn)
+
+        todoEl.appendChild(titleInputWrapper)
+        todoEl.appendChild(textInputWrapper)
+        todoEl.appendChild(actionsWrapper)
+
+        // handlers for confirm and cancel
+        confirmBtn.addEventListener('click', (ev) => {
+            ev.preventDefault()
+            const newTitle = titleInput.value.trim()
+            const newText = textInput.value.trim()
+
+            const updatedObj = {
+                title: newTitle,
+                text: newText
+            }
+
+            updateTodo(id, updatedObj)
+            renderTodos()
+        })
+
+        cancelBtn.addEventListener('click', (ev) => {
+            ev.preventDefault()
+            todoEl.innerHTML = originalContent
+        })
+
+        return
     }
 })
 

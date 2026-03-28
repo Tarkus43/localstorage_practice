@@ -66,5 +66,18 @@ const deleteTodo = (id) => {
     } 
     renderTodos()
 }
+
+// helper to update todo by id
+const updateTodo = (id, updatedObj) => {
+    const todoList = JSON.parse(localStorage.getItem('todos')) || {}
+    // keep existing id in stored object
+    todoList[id] = updatedObj
+    try {
+        localStorage.setItem('todos', JSON.stringify(todoList))
+    } catch (error) {
+        console.log(`error during saving to localstorage: ${error}`)
+    }
+}
+
 // exports
-export {renderTodos, addNewTodo, deleteTodo}
+export {renderTodos, addNewTodo, deleteTodo, updateTodo}
