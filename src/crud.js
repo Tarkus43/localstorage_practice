@@ -45,21 +45,29 @@ const renderTodos = () => {
         text.className = 'todo_item_description'
         text.textContent = data['text']
 
+        const body = document.createElement('div')
+        body.className = 'todo_item_body'
+        body.appendChild(title)
+        body.appendChild(text)
+
         const deleteTodo = document.createElement('button')
         deleteTodo.textContent = 'delete'
         deleteTodo.id = `btn${id}`
-        deleteTodo.classList += 'delete_btn'
+        deleteTodo.classList.add('delete_btn')
 
         const editTodo = document.createElement('button')
         editTodo.textContent = 'edit'
         editTodo.id = `edt${id}`
-        editTodo.classList += 'edit_btn'
+        editTodo.classList.add('edit_btn')
 
+        const actionsRow = document.createElement('div')
+        actionsRow.className = 'todo_item_actions'
+        actionsRow.appendChild(editTodo)
+        actionsRow.appendChild(deleteTodo)
+
+        todo.appendChild(body)
         todo.appendChild(done)
-        todo.appendChild(title)
-        todo.appendChild(text)
-        todo.appendChild(editTodo)
-        todo.appendChild(deleteTodo)
+        todo.appendChild(actionsRow)
 
         list.appendChild(todo)
     }

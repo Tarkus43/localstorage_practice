@@ -98,9 +98,9 @@ body{
     padding: 5vh;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: stretch;
     justify-content: flex-start;
-    gap: 2vh;
+    gap: clamp(1.25rem, 4vh, 2.5rem);
     transition: 1s;
     
 }
@@ -116,20 +116,43 @@ body{
 }
 
 .todo_item {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    column-gap: 0.75rem;
+    width: 100%;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: clamp(1rem, 3vw, 2rem);
     row-gap: 0.35rem;
+    align-items: start;
     font-size: 1vw;
 }
 
+.todo_item_body {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+}
+
+.todo_item_title {
+    width: 100%;
+}
+
+.todo_item_description {
+    width: 100%;
+    margin: 0;
+}
+
 .todo_done_checkbox {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    align-self: center;
     width: 1.1em;
     height: 1.1em;
-    margin-top: 0.2em;
     cursor: pointer;
-    flex-shrink: 0;
     accent-color: #036338;
     background-color: #fff;
 }
@@ -144,13 +167,27 @@ body{
     display: none;
 }
 
+.todo_item_actions {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(0.35rem, 2vw, 0.75rem);
+    min-width: 0;
+}
+
 .delete_btn{
     background-color: rgba(162, 0, 0, 0.831);
     box-shadow: 1px 1px 0 0;
     border-radius: 5px;
     color: #fafafa;
-    padding: 1%;
-    margin-left: 3%;
+    padding: clamp(0.12rem, 0.9vw, 0.3rem) clamp(0.35rem, 1.6vw, 0.55rem);
+    flex-shrink: 0;
+    font-size: clamp(0.75rem, 2.2vw, 1rem);
+    cursor: pointer;
 }
 
 .delete_btn:hover{
@@ -162,7 +199,10 @@ body{
     box-shadow: 1px 1px 0 0;
     border-radius: 5px;
     color: #fafafa;
-    padding: 1%;
+    padding: clamp(0.12rem, 0.9vw, 0.3rem) clamp(0.35rem, 1.6vw, 0.55rem);
+    flex-shrink: 0;
+    font-size: clamp(0.75rem, 2.2vw, 1rem);
+    cursor: pointer;
 }
 
 .edit_btn:hover{

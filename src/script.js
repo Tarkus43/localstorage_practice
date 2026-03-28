@@ -68,7 +68,7 @@ list.addEventListener('click', e => {
         textInputWrapper.appendChild(textInput)
 
         const actionsWrapper = document.createElement('div')
-        actionsWrapper.className = 'edit_actions'
+        actionsWrapper.className = 'todo_item_actions'
 
         const confirmBtn = document.createElement('button')
         confirmBtn.textContent = 'confirm'
