@@ -30,12 +30,14 @@ list.addEventListener('change', e => {
 // catching button clicks on todos
 list.addEventListener('click', e => {
     if (e.target.classList.contains('delete_btn')){
+        if (e.target.classList.contains('cancel_update_btn')) return
         const id = e.target.id.slice(3)
         deleteTodo(id)
         return
     }
 
     if (e.target.classList.contains('edit_btn')){
+        if (e.target.classList.contains('confirm_update_btn')) return
         const id = e.target.id.slice(3)
         const todoEl = document.getElementById(`todo-${id}`)
         if (!todoEl) return
@@ -67,6 +69,15 @@ list.addEventListener('click', e => {
         textInput.id = `editText-${id}`
         textInputWrapper.appendChild(textInput)
 
+        const body = document.createElement('div')
+        body.className = 'todo_item_body todo_item_body--edit'
+        body.appendChild(titleInputWrapper)
+        body.appendChild(textInputWrapper)
+
+        const checkboxSlot = document.createElement('div')
+        checkboxSlot.className = 'todo_item_checkbox_slot'
+        checkboxSlot.setAttribute('aria-hidden', 'true')
+
         const actionsWrapper = document.createElement('div')
         actionsWrapper.className = 'todo_item_actions'
 
@@ -85,8 +96,8 @@ list.addEventListener('click', e => {
         actionsWrapper.appendChild(confirmBtn)
         actionsWrapper.appendChild(cancelBtn)
 
-        todoEl.appendChild(titleInputWrapper)
-        todoEl.appendChild(textInputWrapper)
+        todoEl.appendChild(body)
+        todoEl.appendChild(checkboxSlot)
         todoEl.appendChild(actionsWrapper)
 
         // handlers for confirm and cancel

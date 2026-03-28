@@ -136,6 +136,23 @@ body{
     gap: 0.35rem;
 }
 
+.todo_item_body--edit .todo_input_wrapper {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.todo_item_checkbox_slot {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    justify-self: end;
+    width: 1.1em;
+    min-width: 1.1em;
+    height: 1.1em;
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
 .todo_item_title {
     width: 100%;
 }
@@ -161,6 +178,10 @@ body{
 .todo_item--checked .todo_item_description {
     text-decoration: line-through;
     opacity: 0.65;
+}
+
+.todo_item--checked .todo_item_actions {
+    display: none;
 }
 
 .hidden{
