@@ -16,5 +16,11 @@ const checkIfTodoEmpty = () => {
     }
 }
 
+// helper to get todo by id
+const getTodoById = (id) => {
+    const todos = JSON.parse(localStorage.getItem('todos')) || {}
+    return todos[id]
+}
+
 // exports
-export {findLastId, checkIfTodoEmpty}
+export {findLastId, checkIfTodoEmpty, getTodoById}
