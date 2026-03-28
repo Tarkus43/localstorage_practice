@@ -64,12 +64,14 @@ list.addEventListener('click', e => {
 
         const confirmBtn = document.createElement('button')
         confirmBtn.textContent = 'confirm'
-        confirmBtn.className = 'confirm_update_btn'
+        // use existing edit button styles for confirm (green)
+        confirmBtn.className = 'edit_btn confirm_update_btn'
         confirmBtn.id = `conf${id}`
 
         const cancelBtn = document.createElement('button')
         cancelBtn.textContent = 'cancel'
-        cancelBtn.className = 'cancel_update_btn'
+        // use existing delete button styles for cancel (red)
+        cancelBtn.className = 'delete_btn cancel_update_btn'
         cancelBtn.id = `canc${id}`
 
         actionsWrapper.appendChild(confirmBtn)
